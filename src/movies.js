@@ -51,11 +51,17 @@ function orderAlphabetically(moviesArray) {
 function turnHoursToMinutes(moviesArray) {
     const timeModifiedmoviesArray = moviesArray.map (x => x);
     for (i=0;i<timeModifiedmoviesArray.length;i++){
+        if (timeModifiedmoviesArray[i].duration.includes('min')){
         let hoursDuration = parseInt(timeModifiedmoviesArray[i].duration.slice(0,timeModifiedmoviesArray[i].duration.indexOf('h')))*60;
         let minutesDuration = parseInt(timeModifiedmoviesArray[i].duration.slice(timeModifiedmoviesArray[i].duration.indexOf('h')+2,timeModifiedmoviesArray[i].duration.indexOf('m')));
         timeModifiedmoviesArray[i].duration = hoursDuration + minutesDuration;
     }
+    else {
+        let hoursDuration = parseInt(timeModifiedmoviesArray[i].duration.slice(0,timeModifiedmoviesArray[i].duration.indexOf('h')))*60;
+        timeModifiedmoviesArray[i].duration = hoursDuration;
+    }
     return timeModifiedmoviesArray;
+}
 }
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
